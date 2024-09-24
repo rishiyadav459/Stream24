@@ -1,0 +1,5 @@
+package com.freelancers.Stream24.Repository;
+
+public interface AdminRepository {
+
+}

@@ -1,0 +1,5 @@
+package com.freelancers.Stream24.Entity;
+
+public class LoginRequest {
+
+}

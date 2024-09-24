@@ -1,0 +1,24 @@
+package com.freelancers.Stream24.Configuration;
+
+import org.springframework.stereotype.Component;
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
+import java.util.Base64;
+
+@Component
+public class PasswordDecryptor {
+	
+	 private static final String ALGORITHM = "AES";
+	    private static final byte[] SECRET_KEY = "1234567890123456".getBytes(); // 16-byte key for AES-128
+
+	    public String decrypt(String encryptedPassword) throws Exception {
+	        SecretKey key = new SecretKeySpec(SECRET_KEY, ALGORITHM);
+	        Cipher cipher = Cipher.getInstance(ALGORITHM);
+	        cipher.init(Cipher.DECRYPT_MODE, key);
+	        byte[] decodedBytes = Base64.getDecoder().decode(encryptedPassword);
+	        byte[] decryptedBytes = cipher.doFinal(decodedBytes);
+	        return new String(decryptedBytes);
+	    }
+
+}
